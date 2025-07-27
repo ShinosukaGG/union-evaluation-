@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Union Evaluation by Shinosuka</title>
-  <!-- Brand Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Supermolot:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Supermolot:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <div class="logo-container">
-      <img src="badge3.png" alt="Union Logo" class="logo">
+      <img src="logo.png" alt="Union Logo" class="logo" />
       <span class="site-logo-text">UNION</span>
     </div>
     <h1 class="site-heading">Union Evaluation by Shinosuka</h1>
@@ -20,17 +23,16 @@
   </header>
 
   <main>
-    <!-- Initial form -->
+    <!-- Form Input Box -->
     <div id="form-container" class="form-container">
       <input type="text" id="username-input" placeholder="Enter your Union username" />
       <input type="number" id="testerlevel-input" placeholder="Enter your tester level (1–10)" min="1" max="10" />
       <button id="submit-btn">Submit</button>
     </div>
 
-    <!-- Evaluation box (hidden until submit) -->
+    <!-- Evaluation Box -->
     <div id="evaluation-container" class="evaluation-container hidden">
-      <!-- Populated dynamically: 
-           Username + pfp, central image, stats, achievements, badges, tip -->
+      <!-- Dynamic content will be rendered here -->
     </div>
   </main>
 
@@ -38,7 +40,7 @@
     Tool Built By <a href="https://x.com/shinosuka_eth" target="_blank">Shinosuka</a>
   </footer>
 
-  <!-- Confetti library -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="script.js"></script>
 </body>
