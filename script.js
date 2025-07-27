@@ -11,12 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   let season1Data = [];
 
   // Fetch JSON data from public/ folder
-  fetch('public/top_2000_from_network.json')
+  fetch('/top_2000_from_network.json')
     .then(res => res.json())
     .then(data => { season0Data = data; })
     .catch(err => console.error('Failed to load Season 0 data:', err));
 
-  fetch('public/season1_ss.json')
+  fetch('/season1_ss.json')
     .then(res => res.json())
     .then(data => { season1Data = data; })
     .catch(err => console.error('Failed to load Season 1 data:', err));
