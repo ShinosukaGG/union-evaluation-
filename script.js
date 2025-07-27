@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let season0Data = [];
   let season1Data = [];
 
-  // Load JSON data from public root
   fetch('/top_2000_from_network.json')
     .then(res => res.json())
     .then(data => { season0Data = data; });
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(res => res.json())
     .then(data => { season1Data = data; });
 
-  // Confetti effect
   function launchConfetti() {
     confetti({
       particleCount: 150,
@@ -29,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   confettiBtn.addEventListener('click', launchConfetti);
 
-  // Achievement helper functions
   function getSeason0Achievements(ms) {
     const tags = [];
     if (ms < 0.00) return ['Missed Season 0'];
@@ -60,6 +57,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (level === 10) tags.push('Lambo Soon');
     if (level >= 9) tags.push('Finger Cramped by Testing');
     return tags;
+  }
+
+  function getLevelRank(level) {
+    const ranks = {
+      1: 'Conscript',
+      2: 'Private First Class',
+      3: 'Junior Sergeant',
+      4: 'Sergeant',
+      5: 'Senior Sergeant',
+      6: 'Starshina',
+      7: 'Junior Lieutenant',
+      8: 'Lieutenant',
+      9: 'Senior Lieutenant',
+      10: 'Captain'
+    };
+    return ranks[level] || 'Unknown Rank';
   }
 
   function getContributionTier(s0, s1, tester) {
@@ -109,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const s1Achievements = getSeason1Achievements(parseFloat(s1mind));
 
     const testerAchievements = getTesterAchievements(testerLevel);
+    const levelRank = getLevelRank(testerLevel);
 
     const tier = getContributionTier(s0Achievements, s1Achievements, testerAchievements);
     const allAchievements = [];
@@ -118,8 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     allAchievements.push(...s0Achievements);
     allAchievements.push(...s1Achievements);
     allAchievements.push(...testerAchievements);
+    allAchievements.push(levelRank + ' Rank');
 
-    // Shuffle general achievements into the middle
     const insertAt = Math.floor(allAchievements.length / 2);
     allAchievements.splice(insertAt, 0, ...generalAchievements);
 
@@ -144,8 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     evaluationContainer.innerHTML = `
-      <h2>${username}</h2>
-      <img src="${s0pfp || 'default-pfp.png'}" alt="pfp" class="pfp" />
+      <div class="user-header">
+        <img src="${s0pfp || 'default-pfp.png'}" alt="pfp" class="pfp" />
+        <h2>${username}</h2>
+      </div>
       <hr />
       <img src="${imageName}.png" alt="central" class="central-img" />
       <h3>Congratulations on Your Evaluation!!!</h3>
